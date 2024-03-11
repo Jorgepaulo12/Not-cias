@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Últimas Notícias</title>
+    <!-- Adicione o link para o CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Adicione seu próprio arquivo de estilo CSS para personalizações -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Notícias</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Início <span class="sr-only">(current)</span></a>
+                </li>
+                <!-- Adicione mais itens de navegação conforme necessário -->
+            </ul>
+        </div>
+    </nav>
 
+    <div class="container mt-4">
+        <h1 class="text-center">Últimas Notícias</h1>
+        
+        <form action="/" method="post" class="form-inline my-4 justify-content-center">
+            <input type="text" name="query" class="form-control mr-sm-2" placeholder="Digite o termo de busca">
+            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Pesquisar</button>
+        </form>
+
+        <div class="row">
+            {% for news_item in latest_news %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="{{ news_item.image_url }}" class="card-img-top" alt="{{ news_item.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ news_item.title }}</h5>
+                            <p class="card-text">Fonte: {{ news_item.source }}</p>
+                            <p class="card-text"><small class="text-muted">Publicado em {{ news_item.published_at }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Adicione o JavaScript do Bootstrap e dependências -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+                      </html>
+              
